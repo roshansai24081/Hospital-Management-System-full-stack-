@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Management</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-container .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-container ul {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-container ul li {
+            margin-left: 20px;
+        }
+
+        .navbar-container ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .navbar-container ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Doctor List Section */
+        .doctor-list-container {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .doctor-item {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .doctor-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .doctor-item h3 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .doctor-item p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Doctor Details Section */
+        .doctor-details {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .doctor-list-container {
+                padding: 10px;
+            }
+
+            .doctor-item {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="navbar-container">
+            <div class="logo">Doctor Management</div>
+            <ul>
+                <li><a href="{{url_for('job_approvals')}}">Pending Job Applications</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Section -->
+    <div class="content-container">
+        <h2>List of Doctors</h2>
+        
+        <!-- Doctor List Section -->
+        <div class="doctor-list-container">
+            {% if doctors %}
+                {% for doctor in doctors %}
+                    <div class="doctor-item">
+                        <h3>{{ doctor['name'] }}</h3>
+                        <p>Doctor ID: {{ doctor['doctor_id'] }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No doctors found.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Our Hospital. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

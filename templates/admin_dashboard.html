@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            background-color: #17a2b8;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-container .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-container ul {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-container ul li {
+            margin-left: 20px;
+        }
+
+        .navbar-container ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .navbar-container ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar-container ul li .logout-btn {
+            background-color: #dc3545;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+        }
+
+        .navbar-container ul li .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Main Dashboard Styles */
+        .dashboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .tile {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .tile:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .tile h3 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .tile p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            background-color: #17a2b8;
+            color: white;
+            padding: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .dashboard-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tile {
+                width: 90%;
+                margin: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="navbar-container">
+            <div class="logo">Admin Dashboard</div>
+            <ul>
+                <li><a href="{{url_for('signin_admin')}}" class="logout-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Section -->
+    <div class="dashboard-container">
+        <!-- Doctors Tile (Clickable) -->
+        <a href="{{url_for('doctors')}}" class="tile">
+            <h3>Doctors</h3>
+            <p>Manage and view all doctors</p>
+        </a>
+
+        <!-- Active Patients Tile (Clickable) -->
+        <a href="{{ url_for('active_patients') }}" class="tile">
+            <h3>Active Patients</h3>
+            <p>View and manage active patients</p>
+        </a>
+
+        <!-- Ready to Discharge Patients Tile (Clickable) -->
+        <a href="{{url_for('ready_to_discharge')}}" class="tile">
+            <h3>Ready to Discharge</h3>
+            <p>View patients ready to be discharged</p>
+        </a>
+
+        <!-- Discharged Patients Tile (Clickable) -->
+        <a href="{{url_for('discharged_patients')}}" class="tile">
+            <h3>Discharged Patients</h3>
+            <p>Manage and view discharged patients</p>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Our Hospital. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

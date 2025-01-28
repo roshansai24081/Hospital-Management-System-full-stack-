@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Homepage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        .hero {
+            background-color: #ffffff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            color: #0066cc;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .achievements-events-section h3 {
+            font-size: 28px;
+            color: #0066cc;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .achievements-events-card img {
+            border-radius: 8px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .achievements-events-card {
+            margin-bottom: 30px;
+        }
+
+        .contact-us-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-top: 60px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-us-section h3 {
+            color: #0066cc;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .contact-us-section ul li {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .specialized-departments-section {
+            background-color: #f8f9fa;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .specialized-department-card img {
+            border-radius: 8px;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .specialized-department-card {
+            margin-bottom: 30px;
+        }
+
+        .patient-success-stories-section {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .success-story-card img {
+            border-radius: 8px;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .success-story-card {
+            margin-bottom: 30px;
+        }
+
+        .upcoming-seminars-section {
+            background-color: #f8f9fa;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .seminar-card img {
+            border-radius: 8px;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .seminar-card {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar Section -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Our Hospital</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="{{url_for('home')}}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('appointment_form') }}">Book an Appointment</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{url_for('careers')}}">Careers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact-us">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <section id="main-content">
+        <div class="hero">
+            <h1>Welcome to Our Hospital</h1>
+            <p>Your health, our priority. Book an appointment today and start your journey to recovery.</p>
+        </div>
+    </section>
+
+    <!-- Achievements & Events Section -->
+    <div class="achievements-events-section container">
+        <h3>Our Achievements & Community Events</h3>
+        <div class="row">
+            <!-- Achievement Card 1 -->
+            <div class="col-md-4">
+                <div class="card achievements-events-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Awarded Best Hospital">
+                    <div class="card-body">
+                        <h5 class="card-title">Best Hospital of the Year</h5>
+                        <p class="card-text">Awarded for excellence in patient care, advanced medical technology, and compassionate service.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Achievement Card 2 -->
+            <div class="col-md-4">
+                <div class="card achievements-events-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Free Medical Camps">
+                    <div class="card-body">
+                        <h5 class="card-title">Free Medical Camps</h5>
+                        <p class="card-text">Providing free health check-ups and consultations in various communities. Join us for our next camp!</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Achievement Card 3 -->
+            <div class="col-md-4">
+                <div class="card achievements-events-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Blood Donation Camps">
+                    <div class="card-body">
+                        <h5 class="card-title">Blood Donation Camps</h5>
+                        <p class="card-text">Support life-saving blood donations that help thousands of people each year. Join our next camp!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Specialized Departments Section -->
+    <div class="specialized-departments-section container">
+        <h3>Our Specialized Departments</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card specialized-department-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Cardiology">
+                    <div class="card-body">
+                        <h5 class="card-title">Cardiology</h5>
+                        <p class="card-text">Our cardiology department provides state-of-the-art diagnostics and treatments for heart conditions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card specialized-department-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Orthopedics">
+                    <div class="card-body">
+                        <h5 class="card-title">Orthopedics</h5>
+                        <p class="card-text">Specialized care for bones, joints, and muscles to ensure complete recovery from fractures and injuries.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card specialized-department-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Pediatrics">
+                    <div class="card-body">
+                        <h5 class="card-title">Pediatrics</h5>
+                        <p class="card-text">Comprehensive care for children, from newborns to adolescents, ensuring their healthy growth and development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Patient Success Stories Section -->
+    <div class="patient-success-stories-section container">
+        <h3>Patient Success Stories</h3>
+        <div class="row">
+            <!-- Success Story Card 1 -->
+            <div class="col-md-4">
+                <div class="card success-story-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="John Doe Recovery">
+                    <div class="card-body">
+                        <h5 class="card-title">John Doe's Recovery</h5>
+                        <p class="card-text">John came to us with a severe heart condition. After treatment at our Cardiology department, he made a full recovery and now lives a healthy life.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Success Story Card 2 -->
+            <div class="col-md-4">
+                <div class="card success-story-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Sarah's Knee Surgery">
+                    <div class="card-body">
+                        <h5 class="card-title">Sarah's Knee Surgery</h5>
+                        <p class="card-text">After an accident, Sarah underwent knee surgery with our Orthopedics team. Now she is back to running marathons!</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Success Story Card 3 -->
+            <div class="col-md-4">
+                <div class="card success-story-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Baby Emma's Birth">
+                    <div class="card-body">
+                        <h5 class="card-title">Baby Emma's Birth</h5>
+                        <p class="card-text">Our team of pediatricians ensured a smooth and safe delivery for Emma. She is now a healthy, happy baby!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upcoming Seminars Section -->
+    <div class="upcoming-seminars-section container">
+        <h3>Upcoming Health Seminars</h3>
+        <div class="row">
+            <!-- Seminar Card 1 -->
+            <div class="col-md-4">
+                <div class="card seminar-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Heart Health Seminar">
+                    <div class="card-body">
+                        <h5 class="card-title">Heart Health Seminar</h5>
+                        <p class="card-text">Join us for an informative seminar on maintaining a healthy heart and preventing cardiovascular diseases.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Seminar Card 2 -->
+            <div class="col-md-4">
+                <div class="card seminar-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Diabetes Awareness">
+                    <div class="card-body">
+                        <h5 class="card-title">Diabetes Awareness</h5>
+                        <p class="card-text">Learn about the prevention, management, and treatment of diabetes in our interactive seminar.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Seminar Card 3 -->
+            <div class="col-md-4">
+                <div class="card seminar-card">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Mental Health Workshop">
+                    <div class="card-body">
+                        <h5 class="card-title">Mental Health Workshop</h5>
+                        <p class="card-text">Join us for a workshop focused on mental health, stress management, and improving overall well-being.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Section -->
+    <section class="contact-us-section container" id="contact-us">
+        <h3>Contact Us</h3>
+        <p>If you have any questions or need assistance, feel free to reach out. We're here to help!</p>
+        <ul>
+            <li><strong>Email:</strong> support@ourhospital.com</li>
+            <li><strong>Phone:</strong> +1 (555) 123-4567</li>
+            <li><strong>Address:</strong> 123 Wellness Street, Health City, HC 12345</li>
+        </ul>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 Our Hospital. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Dashboard</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        nav {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+        }
+
+        ul li {
+            margin-left: 20px;
+        }
+
+        ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .dashboard-container {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #28a745;
+            color: white;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .btn-discharge {
+            background-color: #dc3545;
+            font-size: 14px;
+            padding: 10px 20px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .btn-discharge:hover {
+            background-color: #c82333;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            table, table th, table td {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .btn-discharge {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="navbar-container">
+            <div class="logo">Doctor's Dashboard</div>
+            <ul>
+                <li><a href="{{url_for('discharged_patients')}}">Discharged Patients</a></li>
+                <li><a href="{{url_for('signin_doctor')}}" class="logout-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Section -->
+    <div class="dashboard-container">
+        <h2>Patient List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>Patient Name</th>
+                    <th>Slot</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients %}
+                <tr>
+                    <td>{{ patient.patient_id }}</td>
+                    <td>
+                        <a href="{{ url_for('patient_details', patient_id=patient.patient_id) }}" style="text-decoration: none; color: #007bff;">
+                            {{ patient.name }}
+                        </a>
+                        
+                    </td>
+                    <td>{{ patient.timeslot }}</td>
+                    <td>
+                        <form action="{{ url_for('to_discharge_patient2') }}" method="POST" style="display:inline;">
+                            <input type="hidden" name="patient_id" value="{{ patient.patient_id }}">
+                            <button type="submit" class="btn btn-discharge">Discharge</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Our Hospital. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
